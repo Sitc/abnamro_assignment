@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("./fonts/NunitoSans-Regular.ttf");
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+li {
+  list-style: none;
+}

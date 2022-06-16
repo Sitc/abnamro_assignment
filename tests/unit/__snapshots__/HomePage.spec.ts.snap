@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage.vue test description 1`] = `
+<div class="home__page">
+  <show-list-stub data="" loading="false"></show-list-stub>
+  <!--v-if-->
+  <!--v-if-->
+</div>
+`;
+
+exports[`HomePage.vue test description 2`] = `
+<div class="home__page">
+  <show-list-stub data="" loading="true"></show-list-stub>
+  <p>Still Loading</p>
+  <!--v-if-->
+</div>
+`;
