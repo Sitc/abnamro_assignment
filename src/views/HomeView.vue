@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home__page">
     <HomePage />
   </div>
 </template>
@@ -15,3 +15,7 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+@import "@/assets/home.css";
+</style>

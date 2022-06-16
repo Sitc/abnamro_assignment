@@ -1,0 +1,32 @@
+
+.show--list_item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.card {
+  border-radius: 5px;
+  display: inline-grid;
+  grid-auto-rows: 1fr;
+  overflow: auto;
+  height: 300px;
+  min-width: 250px;
+  max-width: 250px;
+  box-shadow: 2px 2px 8px 0 hsla(0, 0%, 0%, 0.2);
+  padding-bottom: 1rem;
+}
+
+.card--info {
+  margin: 0.8rem 0.8rem 0.4rem 0.8rem;
+}
+
+.card--title {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: .4rem;
+}

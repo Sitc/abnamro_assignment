@@ -1,18 +1,18 @@
 <template>
-  <ul v-if="!loading && data && data.length">
-    <li v-for="show of data" :key="show.id">
-      <p>
-        <strong>{{ show.name }}</strong>
-      </p>
-    </li>
+  <ul class="show--list" v-if="!loading && data && data.length">
+    <ShowCard :data="data" />
   </ul>
 </template>
 
 <script lang="ts">
 import type { IShow } from "@/types/Show";
 import { defineComponent, PropType } from "vue";
+import ShowCard from "./ShowCard.vue";
 
 export default defineComponent({
+  components: {
+    ShowCard,
+  },
   props: {
     data: {
       type: Array as PropType<IShow[]>,
@@ -26,4 +26,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+@import "@/assets/showList.css";
+</style>

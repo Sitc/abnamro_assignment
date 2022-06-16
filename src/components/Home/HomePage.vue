@@ -1,5 +1,6 @@
 <template>
-  <div class="home__page">
+  <div class="home__page--content">
+    <h1 class="home__page--title">All TV series</h1>
     <ShowList :data="data" :loading="loading" />
     <p v-if="loading">Still Loading</p>
     <p v-if="error"></p>
@@ -26,6 +27,7 @@ export default defineComponent({
       loading.value = true;
       try {
         const shows = await getAllShows();
+        console.log(shows);
         data.value = shows as IShow[];
         loading.value = false;
       } catch (e) {
@@ -43,4 +45,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+@import "@/assets/home.css";
+</style>
