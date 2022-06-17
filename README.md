@@ -4,7 +4,9 @@ I choose Vue3 to create this project since likely this is what I will work with 
 I would like to emphasise that this is the first Vue3 app I created.It is a lot of fun but of course, in this limited amount of time, I can not optimize it as I would otherwise.
 
 Also, I ran into a few unexpected issues with ‘emit’ which led me to not break down **HomePage.vue** as much as I planned.
+```
 
+TODO/Plan
 - [x] Initiate Vue3 project
 - [x] Fetch all shows from api
 - [x] Render all shows in a responsive grid
@@ -16,8 +18,6 @@ Also, I ran into a few unexpected issues with ‘emit’ which led me to not bre
 - [ ] Navigate to selected show page 
 - [ ] Display detailed info about show
 - [ ] Show episodes
-```
-[] 
 
 ## Project setup
 ```
