@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vueform/multiselect": "^2.4.2",
     "@vueuse/head": "^0.7.6",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",

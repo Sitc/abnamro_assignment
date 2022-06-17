@@ -1,30 +1,27 @@
-<template>
-  <ul class="show--list" v-if="!loading && data && data.length">
-    <ShowCard :data="data" />
-  </ul>
-</template>
-
-<script lang="ts">
+<script setup lang="ts">
+import { defineProps } from "vue";
 import type { IShow } from "@/types/Show";
-import { defineComponent, PropType } from "vue";
 import ShowCard from "./ShowCard.vue";
+import LoadingScreen from "../Loading/LoadingScreen.vue";
 
-export default defineComponent({
-  components: {
-    ShowCard,
-  },
-  props: {
-    data: {
-      type: Array as PropType<IShow[]>,
-      required: true,
-    },
-    loading: {
-      type: Boolean,
-      required: true,
-    },
-  },
-});
+const props = defineProps<{
+  data: IShow[];
+  loading: boolean;
+}>();
 </script>
+
+<template>
+  <div>
+    <Suspense>
+      <ul class="show--list">
+        <ShowCard :data="data" />
+      </ul>
+      <template #fallback>
+        <LoadingScreen :isLoading="loading" />
+      </template>
+    </Suspense>
+  </div>
+</template>
 
 <style scoped>
 @import "@/assets/showList.css";
