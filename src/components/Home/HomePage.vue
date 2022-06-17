@@ -43,31 +43,25 @@ export default defineComponent({
     let selectedCategory = ref<string>("");
     let category = computed(() => extractGenres(data.value));
 
-    const filteredList = computed(() => {
-      return data.value.filter((show) => {
-        return show.name.toLowerCase().includes(search.value.toLowerCase());
-      });
-    });
+    const filteredList = computed(() =>
+      data.value.filter((show) =>
+        show.name.toLowerCase().includes(search.value.toLowerCase())
+      )
+    );
 
-    const selectedCategoryFilter = computed(() => {
-      let value =
-        search.value.length > 0
-          ? filteredList.value.filter((show) => {
-              return show.genres.includes(selectedCategory.value);
-            })
-          : data.value.filter((show) => {
-              return show.genres.includes(selectedCategory.value);
-            });
-      return value;
-    });
+    const selectedCategoryFilter = computed(() =>
+      search.value.length > 0
+        ? filteredList.value.filter((show) =>
+            show.genres.includes(selectedCategory.value)
+          )
+        : data.value.filter((show) =>
+            show.genres.includes(selectedCategory.value)
+          )
+    );
 
-    const showList = computed(() => {
-      let value =
-        selectedCategory.value.length > 1
-          ? selectedCategoryFilter
-          : filteredList;
-      return value;
-    });
+    const showList = computed(() =>
+      selectedCategory.value.length > 1 ? selectedCategoryFilter : filteredList
+    );
 
     onMounted(async () => {
       loading.value = true;
