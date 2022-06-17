@@ -3,13 +3,19 @@
   src: url("./fonts/NunitoSans-Regular.ttf");
 }
 
+:root {
+  --background-dark: #141414;
+  --text-light: #fff;
+  --text-grey: #999;
+}
+
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   width: 100%;
+  background: var(--background-dark);
 }
 
 html, body, #root {

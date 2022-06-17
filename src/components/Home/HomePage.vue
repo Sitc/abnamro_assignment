@@ -1,24 +1,29 @@
 <template>
-  <div class="home__page--content">
-    <header class="header">
-      <h1 class="home__page--title">All TV series</h1>
-      <form class="form">
-        <input
-          type="text"
-          class="home__page--search"
-          placeholder="Search for a TV series"
-          v-model="search"
-        />
-        <Multiselect
-          class="home__page--select"
-          v-model="selectedCategory"
-          :options="category"
-          :placeholder="'placeholder'"
-        />
-      </form>
-    </header>
-    <ShowList :data="showList.value" :loading="loading" :error="error" />
+  <div class="home__page--header">
+    <form class="form">
+      <input
+        type="text"
+        class="home__page--search"
+        placeholder="Search for a TV series"
+        v-model="search"
+      />
+      <Multiselect
+        class="home__page--select"
+        v-model="selectedCategory"
+        :options="category"
+        :placeholder="'placeholder'"
+      />
+    </form>
   </div>
+  <section class="lists" v-if="moviesByCategory && search.length === 0">
+    <scrollable-list
+      v-for="(list, index) in moviesByCategory"
+      :key="index"
+      :title="Object.keys(list).join()"
+      :list="list"
+    />
+  </section>
+  <ShowList v-else :data="showList.value" :loading="loading" :error="error" />
 </template>
 
 <script lang="ts">
@@ -26,14 +31,17 @@ import type { IShow } from "@/types/Show";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { getAllShows } from "@/services/shows/shows.api";
 import Multiselect from "@vueform/multiselect";
+import ScrollableList from "@/components/Home/ScrollableList.vue";
 import ShowList from "./ShowList.vue";
 import extractGenres from "@/helper/extractGenres";
+import generateNewListByGenre from "@/helper/generateNewListByGenre";
 
 export default defineComponent({
   name: "HomePage",
   components: {
     ShowList,
     Multiselect,
+    ScrollableList,
   },
   setup() {
     let loading = ref<boolean>(false);
@@ -42,6 +50,9 @@ export default defineComponent({
     let search = ref<string>("");
     let selectedCategory = ref<string>("");
     let category = computed(() => extractGenres(data.value));
+    let moviesByCategory = computed(() =>
+      generateNewListByGenre(data.value, category.value)
+    );
 
     const filteredList = computed(() =>
       data.value.filter((show) =>
@@ -85,6 +96,7 @@ export default defineComponent({
       category,
       selectedCategory,
       showList,
+      moviesByCategory,
     };
   },
 });

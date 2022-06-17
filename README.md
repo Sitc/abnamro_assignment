@@ -12,12 +12,12 @@ TODO/Plan
 - [x] Render all shows in a responsive grid
 - [x] Filter by name option
 - [x] Filter by genre option
-- [ ] Style navbar
-- [ ] Style from
+- [x] Style navbar
+- [x] Style from
 - [ ] Add rating to show cards
-- [ ] Navigate to selected show page 
-- [ ] Display detailed info about show
-- [ ] Show episodes
+- [x] Navigate to selected show page 
+- [x] Display detailed info about show
+- [x] Show episodes
 
 ## Project setup
 ```

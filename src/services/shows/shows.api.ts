@@ -13,3 +13,21 @@ export async function getAllShows() {
     return error;
   }
 }
+
+export async function getSelectedShow(id) {
+  try {
+    const { data } = await axiosClient.get<IShow[]>(`shows/${id}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getSelectedShowEpisodes(id) {
+  try {
+    const { data } = await axiosClient.get(`shows/${id}/episodes`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+}

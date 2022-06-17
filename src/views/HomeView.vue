@@ -1,6 +1,8 @@
 <template>
   <div class="home__page">
-    <HomePage />
+    <KeepAlive>
+      <HomePage />
+    </KeepAlive>
   </div>
 </template>
 
