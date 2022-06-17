@@ -15,6 +15,7 @@ TODO/Plan
 - [x] Style navbar
 - [x] Style from
 - [ ] Add rating to show cards
+- [ ] Write test for utils
 - [x] Navigate to selected show page 
 - [x] Display detailed info about show
 - [x] Show episodes
