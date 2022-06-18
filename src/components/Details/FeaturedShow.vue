@@ -40,21 +40,8 @@ export default {
     item: null,
   },
   computed: {
-    description() {
-      let description = this.item.overview;
-      if (description.length > 200) {
-        description = `${description.substring(0, 200)}...`;
-      }
-      return description;
-    },
-    votes() {
-      return (this.item.vote_average * 10 * 100) / 100;
-    },
     genres() {
       return this.item.genres.join(", ");
-    },
-    seasonsLabel() {
-      return `Season${this.item.number_of_seasons !== 1 ? "s" : ""}`;
     },
   },
   created() {

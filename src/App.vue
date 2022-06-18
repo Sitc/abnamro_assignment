@@ -16,7 +16,7 @@ import {
   onBeforeUnmount,
 } from "vue";
 import { useHead } from "@vueuse/head";
-import AppHeader from "@/components/Home/AppHeader.vue";
+import AppHeader from "@/components/shared/AppHeader.vue";
 export default defineComponent({
   components: {
     AppHeader,

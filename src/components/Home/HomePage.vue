@@ -7,12 +7,6 @@
         placeholder="Search for a TV series"
         v-model="search"
       />
-      <Multiselect
-        class="home__page--select"
-        v-model="selectedCategory"
-        :options="category"
-        :placeholder="'placeholder'"
-      />
     </form>
   </div>
   <section class="lists" v-if="moviesByCategory && search.length === 0">
@@ -30,8 +24,7 @@
 import type { IShow } from "@/types/Show";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { getAllShows } from "@/services/shows/shows.api";
-import Multiselect from "@vueform/multiselect";
-import ScrollableList from "@/components/Home/ScrollableList.vue";
+import ScrollableList from "@/components/shared/ScrollableList.vue";
 import ShowList from "./ShowList.vue";
 import extractGenres from "@/helper/extractGenres";
 import generateNewListByGenre from "@/helper/generateNewListByGenre";
@@ -40,7 +33,6 @@ export default defineComponent({
   name: "HomePage",
   components: {
     ShowList,
-    Multiselect,
     ScrollableList,
   },
   setup() {

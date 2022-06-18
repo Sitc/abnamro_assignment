@@ -23,10 +23,12 @@
 </template>
 >
 
-<script>
+<script lang="ts">
 import router from "@/router";
 import { MutationTypes } from "@/store/mutation-types";
+
 export default {
+  name: "ScrollableList",
   props: {
     title: {
       type: String,
@@ -72,7 +74,7 @@ export default {
     },
     handleItemClick(item) {
       this.$store.commit(MutationTypes.SET_SELECTED_SHOW, item);
-      router.push(`/series/${item.id}`, { params: item });
+      router.push(`/series/${item.id}`);
     },
   },
 };

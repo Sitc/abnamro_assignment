@@ -14,10 +14,10 @@
 import { defineComponent, onBeforeMount, onMounted, ref } from "vue";
 import { MutationTypes } from "../store/mutation-types";
 import { ActionTypes } from "../store/action-types";
-import FeaturedShow from "@/components/Home/FeaturedShow.vue";
+import FeaturedShow from "@/components/Details/FeaturedShow.vue";
 import { useRoute } from "vue-router";
 import { getSelectedShowEpisodes } from "@/services/shows/shows.api";
-import ScrollableList from "@/components/Home/ScrollableList.vue";
+import ScrollableList from "@/components/shared/ScrollableList.vue";
 
 export default defineComponent({
   components: { FeaturedShow, ScrollableList },
