@@ -27,6 +27,11 @@
             <strong>Genres:</strong>
             {{ genres }}
           </div>
+          <div class="featured--action">
+            <button class="featured--button-back">
+              <router-link to="/"> &lt; Back to home page </router-link>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -52,7 +57,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 .featured {
   height: 100vh;
 }
@@ -73,6 +78,33 @@ export default {
   padding-left: 30px;
   padding-bottom: 100px;
   padding-top: 70px;
+}
+
+.featured--button-back {
+  max-width: 50px;
+  all: unset;
+  cursor: pointer;
+  background-color: #fff;
+  color: var(--background-light);
+  margin-top: 15px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+  opacity: 1;
+  transition: all ease 0.2s;
+}
+
+.featured--button-back:hover {
+  opacity: 0.7;
+}
+
+a {
+  all: unset;
+  color: var(--text-dark);
 }
 
 .featured--title {

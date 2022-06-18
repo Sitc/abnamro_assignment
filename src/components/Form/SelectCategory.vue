@@ -36,7 +36,6 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     function bubbleEvent(value: string) {
-      console.log(value);
       emit("updateSelectedCategory", value);
     }
     return {

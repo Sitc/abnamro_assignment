@@ -74,7 +74,7 @@ export default {
     },
     handleItemClick(item) {
       this.$store.commit(MutationTypes.SET_SELECTED_SHOW, item);
-      router.push(`/series/${item.id}`);
+      router.push({ name: "series", params: { id: item.id } });
     },
   },
 };

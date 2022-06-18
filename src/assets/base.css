@@ -5,8 +5,19 @@
 
 :root {
   --background-dark: #141414;
+  --background-light: hsl(0, 0%, 100%);
   --text-light: #fff;
   --text-grey: #999;
+  --text-dark: #141414;
+
+  --input-width: 300px;
+  --input-width-mobile: 100%;
+  --input-height: 30px;
+
+  --text-header: 2rem;
+  --text-header-mobile: 1.2rem;
+
+  --border-radius-base: 5px;
 }
 
 body {

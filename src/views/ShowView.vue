@@ -48,8 +48,8 @@ export default defineComponent({
     let loading = ref<boolean>(false);
     let error = ref<string>("");
     let data = ref([]);
+
     onMounted(async () => {
-      const id = route.params.id;
       loading.value = true;
       try {
         const episodes = await getSelectedShowEpisodes(route.params.id);

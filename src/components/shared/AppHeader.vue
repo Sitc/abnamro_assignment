@@ -22,29 +22,6 @@ export default defineComponent({
 });
 </script>
 
-<style>
-header {
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4rem;
-  background: transparent;
-  transition: all ease 0.2s;
-}
-
-header.scrolled {
-  background: var(--background-dark);
-}
-
-a {
-  height: 25px;
-  all: unset;
-  color: var(--text-light);
-}
+<style scoped>
+@import "@/assets/appHeader.css";
 </style>

@@ -17,17 +17,16 @@
       :list="list"
     />
   </section>
-  <ShowList v-else :data="showList.value" :loading="loading" :error="error" />
+  <ShowList v-else :data="showList.value" />
 </template>
 
 <script lang="ts">
-import type { IShow } from "@/types/Show";
-import { defineComponent, ref, onMounted, computed } from "vue";
-import { getAllShows } from "@/services/shows/shows.api";
+import { defineComponent, ref, computed } from "vue";
 import ScrollableList from "@/components/shared/ScrollableList.vue";
 import ShowList from "./ShowList.vue";
 import extractGenres from "@/helper/extractGenres";
 import generateNewListByGenre from "@/helper/generateNewListByGenre";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "HomePage",
@@ -36,18 +35,17 @@ export default defineComponent({
     ScrollableList,
   },
   setup() {
-    let loading = ref<boolean>(false);
-    let error = ref<string>("");
-    let data = ref<IShow[]>([]);
+    const store = useStore();
+    const allShows = computed(() => store.state.allShows);
     let search = ref<string>("");
     let selectedCategory = ref<string>("");
-    let category = computed(() => extractGenres(data.value));
+    let category = computed(() => extractGenres(allShows.value));
     let moviesByCategory = computed(() =>
-      generateNewListByGenre(data.value, category.value)
+      generateNewListByGenre(allShows.value, category.value)
     );
 
     const filteredList = computed(() =>
-      data.value.filter((show) =>
+      allShows.value.filter((show) =>
         show.name.toLowerCase().includes(search.value.toLowerCase())
       )
     );
@@ -57,7 +55,7 @@ export default defineComponent({
         ? filteredList.value.filter((show) =>
             show.genres.includes(selectedCategory.value)
           )
-        : data.value.filter((show) =>
+        : allShows.value.filter((show) =>
             show.genres.includes(selectedCategory.value)
           )
     );
@@ -66,29 +64,14 @@ export default defineComponent({
       selectedCategory.value.length > 1 ? selectedCategoryFilter : filteredList
     );
 
-    onMounted(async () => {
-      loading.value = true;
-      try {
-        const shows = await getAllShows();
-        data.value = shows as IShow[];
-        loading.value = false;
-      } catch (e) {
-        error.value = e as string;
-      } finally {
-        loading.value = false;
-      }
-    });
-
     return {
-      loading,
-      error,
-      data,
       search,
       filteredList,
       category,
       selectedCategory,
       showList,
       moviesByCategory,
+      allShows,
     };
   },
 });
