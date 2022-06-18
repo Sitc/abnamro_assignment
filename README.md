@@ -56,3 +56,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+# Screenshots
+![desktop](src/assets/screenshots/desktop0.png)
+![desktop](src/assets/screenshots/desktop1.png)
+![mobile](src/assets/screenshots/mobile0.png)
+![mobile](src/assets/screenshots/mobile1.png)
+![mobile](src/assets/screenshots/mobile2.png)
