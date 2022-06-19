@@ -9,14 +9,7 @@
 
     <div class="scrollableRow--listarea">
       <div class="scrollableRow--list" :style="[listStyle]">
-        <div
-          class="scrollableRow--item"
-          v-for="(item, index) in Object.values(list).flat()"
-          :key="index"
-          @click="handleItemClick(item)"
-        >
-          <img :src="item.image.medium" :alt="item.name" />
-        </div>
+        <ScrollableListItem :list="list" />
       </div>
     </div>
   </div>
@@ -24,8 +17,14 @@
 >
 
 <script lang="ts">
-import router from "@/router";
-import { MutationTypes } from "@/store/mutation-types";
+import { defineAsyncComponent } from "vue";
+
+const ScrollableListItem = defineAsyncComponent(
+  () =>
+    import(
+      "./ScrollableListItem.vue" /* webpackChunkName: "ScrollableListItem" */
+    )
+);
 
 export default {
   name: "ScrollableList",
@@ -72,15 +71,14 @@ export default {
       }
       this.scrollX = roll;
     },
-    handleItemClick(item) {
-      this.$store.commit(MutationTypes.SET_SELECTED_SHOW, item);
-      router.push({ name: "series", params: { id: item.id } });
-    },
+  },
+  components: {
+    ScrollableListItem,
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .scrollableRow {
   margin-bottom: 30px;
   h2 {
@@ -99,21 +97,6 @@ export default {
   width: auto;
   min-width: max-content;
   transition: all ease 0.5s;
-}
-
-.scrollableRow--item {
-  display: inline-block;
-  width: 150px;
-  cursor: pointer;
-  img {
-    width: 100%;
-    transform: scale(0.9);
-    transition: all ease 0.2s;
-
-    &:hover {
-      transform: scale(1);
-    }
-  }
 }
 
 .scrollableRow--arrowleft,

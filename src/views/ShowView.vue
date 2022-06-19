@@ -44,7 +44,7 @@ export default defineComponent({
     },
   },
   setup() {
-    const route = useRoute();
+    const router = useRoute();
     let loading = ref<boolean>(false);
     let error = ref<string>("");
     let data = ref([]);
@@ -52,7 +52,7 @@ export default defineComponent({
     onMounted(async () => {
       loading.value = true;
       try {
-        const episodes = await getSelectedShowEpisodes(route.params.id);
+        const episodes = await getSelectedShowEpisodes(router.params.id);
         data.value = episodes;
         loading.value = false;
       } catch (e) {
