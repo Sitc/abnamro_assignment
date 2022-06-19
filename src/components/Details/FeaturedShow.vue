@@ -1,7 +1,6 @@
 <template>
   <div>
     <section
-      class="featured"
       :style="{
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -58,10 +57,6 @@ export default {
 </script>
 
 <style scoped lang="css">
-.featured {
-  height: 100vh;
-}
-
 .featured--horizontal-transparency {
   width: inherit;
   height: inherit;

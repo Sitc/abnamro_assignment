@@ -1,9 +1,14 @@
 <template>
   <div>
     <app-header :scrolled="scrolled" />
-    <keep-alive include="HomeView">
-      <router-view></router-view>
-    </keep-alive>
+    <Suspense>
+      <template #default>
+        <router-view></router-view>
+      </template>
+      <template #fallback>
+        <div>Loading..</div>
+      </template>
+    </Suspense>
   </div>
 </template>
 <script lang="ts">
